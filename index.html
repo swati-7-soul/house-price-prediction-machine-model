@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>House Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 1px auto;
+            /* max-width: 600px; */
+        }
+
+        .app-container {
+            background-image: url("../static/houses_prices.jpg");
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            background: white !important;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            height: 23px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            margin-top: 20px;
+        }
+
+        .result {
+            margin-top: 25px;
+            font-size: 18px;
+            color: green;
+        }
+
+        .title {
+            margin-bottom: 40px;
+        }
+
+        .button {
+            background: #007bff;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <div class="form-container">
+
+
+            <h1 class="title">🏠 House Price Prediction</h1>
+            <form method="POST">
+                <label for="feature1">Overall Quality (OverallQual) (1–10):</label>
+                <input type="number" name="feature1" step="any" required>
+
+                <label for="feature2">Living Area (GrLivArea):</label>
+                <input type="number" name="feature2" step="any" required>
+
+                <label for="feature3">Garage Cars (GarageCars):</label>
+                <input type="number" name="feature3" step="any" required>
+
+                <label for="feature4">Total Basement Area (sqft) - (TotalBsmtSF):</label>
+                <input type="number" name="feature4" step="any" required>
+
+                <input class="button" type="submit" value="Predict Price">
+            </form>
+
+
+            {% if prediction %}
+            <div class="result">
+                Predicted House Price: <strong>${{ prediction }}</strong>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+</body>
+
+</html>
